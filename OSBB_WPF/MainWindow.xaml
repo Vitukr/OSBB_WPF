@@ -7,6 +7,41 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="50" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="LabelLogin" Content="Login" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBox x:Name="TextBoxLogin" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text=""  Width="120" Background="Gainsboro"/>
+
+            <Label x:Name="LabelPassword" Grid.Column="2" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="TextBoxPassword" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text=""  Width="120" Background="Gainsboro"/>
+
+            <Button x:Name="ButtonLogin" Grid.Column="4" MaxHeight="30" MaxWidth="50">Login</Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid Background="Beige" Height="50" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Background="Azure">
+            
+        </Grid>
     </Grid>
 </Window>
