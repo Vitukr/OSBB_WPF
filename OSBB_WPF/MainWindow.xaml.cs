@@ -1,6 +1,9 @@
-﻿using System;
+﻿using OSBB_WPF.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +26,40 @@ namespace OSBB_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ButtonAnnouncement_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var userName = TextBoxLogin.Text.Trim();
+                var password = TextBoxPassword.Text.Trim();
+                var data = WebService.UseWebClient<AnnouncementApi>(@"http://vysoft.top/api/AnnouncementsApi", userName, password);
+                DataGridData.DataContext = data;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void ButtonContribution_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var userName = TextBoxLogin.Text.Trim();
+                var password = TextBoxPassword.Text.Trim();
+                var data = WebService.UseWebClient<ContributionApi>(@"http://vysoft.top/api/ContributionsApi", userName, password);  
+                DataGridData.DataContext = data;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }

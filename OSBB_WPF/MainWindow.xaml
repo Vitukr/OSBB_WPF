@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OSBB_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
@@ -21,27 +21,50 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label x:Name="LabelLogin" Content="Login" HorizontalAlignment="Center" Grid.Column="0" VerticalAlignment="Center"/>
-            <TextBox x:Name="TextBoxLogin" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text=""  Width="120" Background="Gainsboro"/>
+            <TextBox x:Name="TextBoxLogin" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="User1"  Width="120" Background="Gainsboro"/>
 
             <Label x:Name="LabelPassword" Grid.Column="2" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox x:Name="TextBoxPassword" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text=""  Width="120" Background="Gainsboro"/>
+            <TextBox x:Name="TextBoxPassword" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="P@$$w0rd"  Width="120" Background="Gainsboro"/>
 
-            <Button x:Name="ButtonLogin" Grid.Column="4" MaxHeight="30" MaxWidth="50">Login</Button>
+            <Button x:Name="ButtonLogin" Grid.Column="4" MaxHeight="30" MaxWidth="50" Click="ButtonLogin_Click">Login</Button>
         </Grid>
 
         <Grid Grid.Row="1">
             <Grid Background="Beige" Height="50" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button x:Name="ButtonAnnouncement" Margin="10" Click="ButtonAnnouncement_Click">Announcements</Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="ButtonContribution" Margin="10" Click="ButtonContribution_Click">Contribution</Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button Margin="10">Invoice elctro</Button>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button Margin="10">Invoice gas</Button>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Button Margin="10">Invoice service</Button>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <Button Margin="10">Invoice phone</Button>
+                </Grid>
+                <Grid Grid.Column="6">
+                    <Button Margin="10">Invoice water</Button>
+                </Grid>
             </Grid>
         </Grid>
         <Grid Grid.Row="2" Background="Azure">
-            
+            <DataGrid x:Name="DataGridData" ItemsSource="{Binding}" CanUserAddRows="False"></DataGrid>
         </Grid>
     </Grid>
 </Window>
