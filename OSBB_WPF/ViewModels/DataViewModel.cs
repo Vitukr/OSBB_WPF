@@ -15,7 +15,7 @@ namespace OSBB_WPF.ViewModels
 {
     public class DataViewModel : INotifyPropertyChanged
     {
-        private Binding dataBinding = new Binding();
+        public Binding dataBinding = new Binding();
 
         public DataViewModel()
         {
@@ -31,37 +31,21 @@ namespace OSBB_WPF.ViewModels
                 if (value != dataGridModel)
                 {
                     dataGridModel = value;
-                    //NotifyPropertyChanged(nameof(DataGridModel));
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private IList<AnnouncementApi> announs;
-        public IList<AnnouncementApi> Announs
+        private object dataObject;
+        public object DataObject
         {
-            get => announs ?? (announs = new List<AnnouncementApi>());
+            get => dataObject ?? (dataObject = new object());
             set
             {
-                if (value != announs)
+                if (value != dataObject)
                 {
-                    announs = value;
+                    dataObject = value;
                     //NotifyPropertyChanged(nameof(Announs));
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private IList<ContributionApi> contribs;
-        public IList<ContributionApi> Contribs
-        {
-            get => contribs ?? (contribs = new List<ContributionApi>());
-            set
-            {
-                if (value != contribs)
-                {
-                    contribs = value;
-                    //NotifyPropertyChanged(nameof(Contribs));
                     NotifyPropertyChanged();
                 }
             }
@@ -118,22 +102,10 @@ namespace OSBB_WPF.ViewModels
                   (getDataAnnouncements = new MvvmCommand(obj =>
                   {
                       // to do
-                      dataBinding = new Binding("Announs");
-                      dataGridModel.SetBinding(ItemsControl.ItemsSourceProperty, dataBinding);
-                      LoadDataAnnouncementApi();
+                      //dataBinding = new Binding("DataObject");
+                      //dataGridModel.SetBinding(ItemsControl.ItemsSourceProperty, dataBinding);
+                      LoadData("AnnouncementApi");
                   }));
-            }
-        }
-
-        public void LoadDataAnnouncementApi()
-        {
-            try
-            {
-                Announs = WebService.UseWebClient<AnnouncementApi>(@"http://vysoft.top/api/AnnouncementsApi", login, password);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
             }
         }
 
@@ -146,18 +118,24 @@ namespace OSBB_WPF.ViewModels
                   (getDataContributions = new MvvmCommand(obj =>
                   {
                       // to do
-                      dataBinding = new Binding("Contribs");
-                      dataGridModel.SetBinding(ItemsControl.ItemsSourceProperty, dataBinding);
-                      LoadDataContributionApi();
+                      LoadData("ContributionApi");
                   }));
             }
         }
 
-        public void LoadDataContributionApi()
+        public void LoadData(string dataName)
         {
             try
             {
-                Contribs = WebService.UseWebClient<ContributionApi>(@"http://vysoft.top/api/ContributionsApi", login, password);
+                switch(dataName)
+                {
+                    case "AnnouncementApi":
+                        DataObject = WebService.UseWebClient<AnnouncementApi>(@"http://vysoft.top/api/AnnouncementsApi", login, password);
+                        break;
+                    case "ContributionApi":
+                        DataObject = WebService.UseWebClient<ContributionApi>(@"http://vysoft.top/api/ContributionsApi", login, password);
+                        break;
+                }
             }
             catch (Exception exc)
             {

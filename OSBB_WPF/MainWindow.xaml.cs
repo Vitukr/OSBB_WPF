@@ -29,9 +29,11 @@ namespace OSBB_WPF
             InitializeComponent();
             var dgm = new DataViewModel
             {
-                DataGridModel = DataGridData
-            };
+                DataGridModel = DataGridData,
+                dataBinding = new Binding("DataObject")
+        };
             DataContext = dgm;
+            dgm.DataGridModel.SetBinding(ItemsControl.ItemsSourceProperty, dgm.dataBinding);
         }
     }
 }
