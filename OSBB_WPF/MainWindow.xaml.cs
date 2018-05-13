@@ -31,9 +31,9 @@ namespace OSBB_WPF
             {
                 DataGridModel = DataGridData,
                 dataBinding = new Binding("DataObject")
-        };
-            DataContext = dgm;
+            };
             dgm.DataGridModel.SetBinding(ItemsControl.ItemsSourceProperty, dgm.dataBinding);
+            DataContext = dgm;
         }
     }
 }

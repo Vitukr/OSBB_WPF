@@ -8,22 +8,24 @@ using System.Threading.Tasks;
 
 namespace OSBB_WPF.Models
 {
-    public class AnnouncementApi : INotifyPropertyChanged
+    public class AnnouncementApi /*: INotifyPropertyChanged*/
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime Date { get; set; }
 
-        private string _userName;
+        public string UserName { get; set; }
 
-        public string UserName { get { return _userName; } set { if (_userName != value) { _userName = value; NotifyPropertyChanged("_userName"); } } }
+        //private string _userName;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public string UserName { get { return _userName; } set { if (_userName != value) { _userName = value; NotifyPropertyChanged("_userName"); } } }
 
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
     }
 }

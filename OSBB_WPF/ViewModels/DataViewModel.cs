@@ -1,12 +1,7 @@
 ﻿using OSBB_WPF.Models;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -123,6 +118,76 @@ namespace OSBB_WPF.ViewModels
             }
         }
 
+        private MvvmCommand getDataInvoiceElektros;
+        public MvvmCommand GetDataInvoiceElektros
+        {
+            get
+            {
+                return getDataInvoiceElektros ??
+                  (getDataInvoiceElektros = new MvvmCommand(obj =>
+                  {
+                      // to do
+                      LoadData("InvoiceElectroApi");
+                  }));
+            }
+        }
+
+        private MvvmCommand getDataInvoiceGazs;
+        public MvvmCommand GetDataInvoiceGazs
+        {
+            get
+            {
+                return getDataInvoiceGazs ??
+                  (getDataInvoiceGazs = new MvvmCommand(obj =>
+                  {
+                      // to do
+                      LoadData("InvoiceGazApi");
+                  }));
+            }
+        }
+
+        private MvvmCommand getDataInvoiceServices;
+        public MvvmCommand GetDataInvoiceServices
+        {
+            get
+            {
+                return getDataInvoiceServices ??
+                  (getDataInvoiceServices = new MvvmCommand(obj =>
+                  {
+                      // to do
+                      LoadData("InvoiceServiceApi");
+                  }));
+            }
+        }
+
+        private MvvmCommand getDataInvoiceTels;
+        public MvvmCommand GetDataInvoiceTels
+        {
+            get
+            {
+                return getDataInvoiceTels ??
+                  (getDataInvoiceTels = new MvvmCommand(obj =>
+                  {
+                      // to do
+                      LoadData("InvoiceTelApi");
+                  }));
+            }
+        }
+
+        private MvvmCommand getDataInvoiceWaters;
+        public MvvmCommand GetDataInvoiceWaters
+        {
+            get
+            {
+                return getDataInvoiceWaters ??
+                  (getDataInvoiceWaters = new MvvmCommand(obj =>
+                  {
+                      // to do
+                      LoadData("InvoiceWaterApi");
+                  }));
+            }
+        }
+
         public void LoadData(string dataName)
         {
             try
@@ -134,6 +199,21 @@ namespace OSBB_WPF.ViewModels
                         break;
                     case "ContributionApi":
                         DataObject = WebService.UseWebClient<ContributionApi>(@"http://vysoft.top/api/ContributionsApi", login, password);
+                        break;
+                    case "InvoiceElectroApi":
+                        DataObject = WebService.UseWebClient<InvoiceElectroApi>(@"http://vysoft.top/api/InvoiceElectroesApi", login, password);
+                        break;
+                    case "InvoiceGazApi":
+                        DataObject = WebService.UseWebClient<InvoiceGazApi>(@"http://vysoft.top/api/InvoiceGazsApi", login, password);
+                        break;
+                    case "InvoiceServiceApi":
+                        DataObject = WebService.UseWebClient<InvoiceServiceApi>(@"http://vysoft.top/api/InvoiceServicesApi", login, password);
+                        break;
+                    case "InvoiceTelApi":
+                        DataObject = WebService.UseWebClient<InvoiceTelApi>(@"http://vysoft.top/api/InvoiceTelsApi", login, password);
+                        break;
+                    case "InvoiceWaterApi":
+                        DataObject = WebService.UseWebClient<InvoiceWaterApi>(@"http://vysoft.top/api/InvoiceWatersApi", login, password);
                         break;
                 }
             }

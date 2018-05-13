@@ -42,8 +42,6 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
-
-            <Button x:Name="ButtonLogin" Grid.Column="4" MaxHeight="30" MaxWidth="50">Login</Button>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -64,19 +62,19 @@
                     <Button x:Name="ButtonContribution" Margin="10" Command="{Binding GetDataContributions}">Contribution</Button>
                 </Grid>
                 <Grid Grid.Column="2">
-                    <Button Margin="10">Invoice elctro</Button>
+                    <Button Margin="10" Command="{Binding GetDataInvoiceElektros}">Invoice elctro</Button>
                 </Grid>
                 <Grid Grid.Column="3">
-                    <Button Margin="10">Invoice gas</Button>
+                    <Button Margin="10" Command="{Binding GetDataInvoiceGazs}">Invoice gas</Button>
                 </Grid>
                 <Grid Grid.Column="4">
-                    <Button Margin="10">Invoice service</Button>
+                    <Button Margin="10" Command="{Binding GetDataInvoiceServices}">Invoice service</Button>
                 </Grid>
                 <Grid Grid.Column="5">
-                    <Button Margin="10">Invoice phone</Button>
+                    <Button Margin="10" Command="{Binding GetDataInvoiceTels}">Invoice phone</Button>
                 </Grid>
                 <Grid Grid.Column="6">
-                    <Button Margin="10">Invoice water</Button>
+                    <Button Margin="10" Command="{Binding GetDataInvoiceWaters}">Invoice water</Button>
                 </Grid>
             </Grid>
         </Grid>
